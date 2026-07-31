@@ -1,3 +1,19 @@
+import os
+from threading import Thread
+from flask import Flask
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive"
+
+def run():
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 10000)))
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 import telebot
 from telebot import types
 import sqlite3
@@ -7,7 +23,7 @@ from datetime import datetime
 import pytz
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
-bot = telebot.TeleBot(BOT_TOKEN)
+bot = telebot.TeleBot(BOT_TOKEN)keep_alive()
 
 LAGOS_TZ = pytz.timezone("Africa/Lagos")
 DB_NAME = "polmatrix.db"
