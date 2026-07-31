@@ -23,8 +23,8 @@ from datetime import datetime
 import pytz
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
-bot = telebot.TeleBot(BOT_TOKEN)keep_alive()
-
+bot = telebot.TeleBot(BOT_TOKEN)
+keep_alive()
 LAGOS_TZ = pytz.timezone("Africa/Lagos")
 DB_NAME = "polmatrix.db"
 BACKUP_FOLDER = "backups"
